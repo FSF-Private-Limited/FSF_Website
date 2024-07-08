@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+       <div class="container mt-5">
+        <h1 class="text-center mt-3">Registation Form</h1>
+             <div class="container">
+                <form action="/register" method="" enctype="multipart/form-data" class=" needs-validation" novalidate>
+                    {% csrf_token %}
+                     <div class="row">
+                          <div class="col-lg-2 col-md-0"></div>
+                          <div class="col-lg-8 d-flex mt-3 col-md-12">
+                               <input type="text"  id="firstname" name="firstname" class="form-control me-3" placeholder="Enter your first name" required >
+                               <label for="" class="form-label"></label>
+                               <input type="text"  id="lastname" name="lastname" class="form-control" placeholder="Enter your last name" required>
+                               <label for="" class="form-label"></label>
+                          </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-lg-2 col-md-0"></div>
+                        <div class="col-lg-8 d-flex mt-3 col-md-12">
+                             <input type="text" id="number" name="number" class="form-control me-3" placeholder="Enter your number" required>
+                             <label for="number" class="form-label"></label>
+                             <input type="text" name="city" id="city" class="form-control" placeholder="Enter your city name" required>
+                             <label for="" class="form-label"></label>
+                        </div>
+                   </div>
+                     <div class="row">
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-8 d-flex mt-3 justify-content-center">
+                               <input type="email"  id="email" class="form-control" placeholder="Enter your mail" name="email" required>
+                               <label for="" class="form-label"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-8 col-md-12 d-flex mt-3 justify-content-center">
+                               <input type="text"  id="message" class="form-control" placeholder="Type your message here..." name="regarding" required>
+                               <label for="" class="form-label"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-4 col-md-12">
+                            <button class="btn btn-primary mt-3" type="" id="submitbtn"  data-bs-toggle="modal" data-bs-target="#exampleModal">Submit</button>
+                            <button class="btn btn-danger mt-3">Cancel</button>
+                        </div>
+                    </div>
+                   </form>
+                 
+ 
+       </div>
+    </section>
+
+    <script>
+        const submitbtn=document.getElementById('submitbtn')
+        const firstname=document.getElementById('firstname');
+        const lastname=document.getElementById('lastname')
+        const number=document.getElementById('number')
+        const city=document.getElementById('city')
+        const email=document.getElementById('email')
+        const msg = document.getElementById('message')
+        console.log(firstname,number,city,msg,lastname,email)
+        console.log(firstname.value)
+        submitbtn.addEventListener('click',()=>{
+            if(firstname.value!=="" && lastname!=="" && number!=="" && city=="" && email!=="" && msg!=="") {
+                console.log("their is a value")
+             }
+             else{
+                console.log("Fill the all details")
+             }
+        })
+         
+
+
+        console.log(submitbtn);
+        
+    </script>
+
+    <script>  
+        (() => {
+            'use strict'
+          
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+            console.log(forms)
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+              form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                  event.preventDefault()
+                  event.stopPropagation()
+                }
+          
+                form.classList.add('was-validated')
+              }, false)
+            })
+          })()
+    </script>
+{% endblock content %}
